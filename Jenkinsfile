@@ -15,7 +15,10 @@ pipeline {
         stage('Scan') {
             steps {
                 withSonarQubeEnv('sq1') {
-                    sh "sonar-scanner -Dsonar.projectKey=mywebapp"
+                    script {
+                        def scannerHome = tool 'SonarScanner4'
+                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=mywebapp"
+                    }
                 }
             }
         }
