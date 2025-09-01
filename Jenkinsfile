@@ -1,7 +1,8 @@
 pipeline {
-    agent any
-    tools {
-        nodejs "NodeJS"
+    agent {
+        docker {
+            image 'node:18'
+        }
     }
 
     stages {
