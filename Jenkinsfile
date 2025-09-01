@@ -8,6 +8,8 @@ pipeline {
         stage('Build') {
             steps {
                 git branch: 'feature/lab', url: 'https://github.com/sareefhub/simple-express-app.git'
+                sh "node -v"
+                sh "npm -v"
                 sh "npm install"
             }
         }
