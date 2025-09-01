@@ -2,6 +2,7 @@ pipeline {
     agent any
     tools {
         nodejs "Node18"
+        sonarQubeScanner "SonarScanner"
     }
 
     stages {
@@ -15,7 +16,7 @@ pipeline {
         stage('Scan') {
             steps {
                 withSonarQubeEnv('sq1') {
-                    sh "npx sonar-scanner -Dsonar.projectKey=mywebapp"
+                    sh "sonar-scanner -Dsonar.projectKey=mywebapp"
                 }
             }
         }
